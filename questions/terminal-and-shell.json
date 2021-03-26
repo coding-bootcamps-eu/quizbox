@@ -1,0 +1,25 @@
+{
+  "questions": [
+    "What is a terminal?",
+    "What is a alias?",
+    "What is the 'mv' command?",
+    "What is the 'cd' command?",
+    "What is the 'mkdir' command?",
+    "What is the 'touch' command?",
+    "What is the 'rm' command?",
+    "What does ~ mean?",
+    "What is the 'chsh' command?",
+    "What does piping mean?",
+    "What is the 'echo' command?",
+    "What is the 'cat' command?",
+    "What is the 'grep' command?",
+    "What is the 'less' command?",
+    "What is the 'ls' command?",
+    "What is the 'cp' command?",
+    "What is the 'mv' command?",
+    "What is the 'wc' command?",
+    "What is the 'pwd' command?",
+    "What is the 'chmod' command?",
+    "What is the 'which' command?"
+  ]
+}
