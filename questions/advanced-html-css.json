@@ -1,0 +1,26 @@
+{
+  "questions": [
+    "What is the purpose of the flex-direction property?",
+    "What is a flexbox?",
+    "What is the flex-shrink property?",
+    "What is the flex-basis property?",
+    "What is the flex-grow property?",
+    "What is the justify-content property?",
+    "What is the align-items property?",
+    "What is the purpose of the transform property?",
+    "What is the purpose of the translate() function?",
+    "What is the purpose of the scale() function?",
+    "What is a transition?",
+    "What is a transition timing function?",
+    "What is a grid?",
+    "What properties are used to define grid columns?",
+    "What is the fr unit?",
+    "What is the background property?",
+    "What a is a gradient?",
+    "What is a color stop when using a gradient?",
+    "What is the background-size property?",
+    "What are custom properties?",
+    "How can a custom property be defined?",
+    "How does the var() function work?"
+  ]
+}
