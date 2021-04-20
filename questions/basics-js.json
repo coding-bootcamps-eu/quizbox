@@ -1,0 +1,12 @@
+{
+  "questions": [
+    "What does \"for(;;)\" do?",
+    "What is the default function return value?",
+    "What does \"['a', 'b', 'c'][1]\" return?",
+    "What is call-by-reference",
+    "Why does code indention matters",
+    "What might cause a ReferenceError?",
+    "Why can i not name my variable \"return\"?",
+    "What is the scope of a variable?"
+  ]
+}
