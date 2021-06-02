@@ -1,5 +1,54 @@
+* {
+  font-family: sans-serif;
+}
+
 .question {
   font-size: 3rem;
   padding: 2rem 1rem;
   text-align: center;
+  color: #6D51C3;
+}
+
+.answers {
+  display: flex;
+  justify-content: center;
+}
+
+.answers fieldset {
+  border: none;
+}
+
+.answer-wrapper {
+  width: 200px;
+  height: 100px;
+  background: #fff;
+  color: #6D51C3;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  position: relative;
+  border: 5px solid #6D51C3;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.answer-wrapper label {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.answer-wrapper input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+
+input:checked ~ label {
+  background: #6D51C3;
+  color: white;
 }

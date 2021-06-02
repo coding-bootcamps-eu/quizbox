@@ -1,0 +1,20 @@
+{
+  "questions": [{
+    "id": "mv",
+    "question": "What does mv do?",
+    "answers": ["moves files and folders", "copies files and folders", "deletes files"],
+    "correct": "The 'mv' command helps you move files and folders."
+  },
+  {
+    "id": "cp",
+    "question": "What does cp do?",
+    "answers": ["copies files and folders", "move files and folders", "creates a file"],
+    "correct": "The 'cp' command helps you copy files and folders."
+  },
+  {
+    "id": "mkdir",
+    "question": "What does mkdir do?",
+    "answers": ["creates a folder", "moves files and folders", "creates a file"],
+    "correct": "The 'mkdir' command helps you creating folders."
+  }]
+}
