@@ -3,7 +3,7 @@ const nextBtn = document.querySelector("#next");
 const restartBtn = document.querySelector("#restart");
 const topic = document.querySelector("#topic");
 
-function random() {
+function randomize() {
   const l = currentQuestions.length;
   const random = Math.floor(Math.random() * l);
   const currentQuestion = currentQuestions.splice(random, 1)[0];
@@ -12,7 +12,7 @@ function random() {
 
 let currentQuestions = [];
 function showRandomQuestion() {
-  const currentQuestion = random();
+  const currentQuestion = randomize();
 
   if (currentQuestion !== undefined) {
     questionEl.innerText = currentQuestion;

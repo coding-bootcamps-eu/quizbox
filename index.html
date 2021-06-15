@@ -15,7 +15,7 @@
   </head>
   <body>
     <header class="header">
-      <h1 class="title">Quiz Box</h1>
+      <h1 class="title"><a href="./">Quiz Box</a></h1>
       <select class="topic-selection" name="" id="topic">
         <option value="terminal-and-shell">Terminal and Shell</option>
         <option value="basics-html-css">Basics of HTML and CSS</option>
@@ -24,23 +24,50 @@
       </select>
     </header>
     <main class="main">
-      <button id="multiple-choice">Multiple Choice</button>
-      <button id="no-answers">No answers</button>
-      <p class="question" id="question"></p>
-      <form class="answers" id="answers">
-      </form>
-      <div id="right-answer" style="display: none; background: green; color: white; padding: 15px; width: 50%; margin: auto; margin-bottom: 2rem;">
-        <p>Correct!</p>
-        <p id="explanation-correct"></p>
-      </div>
-      <div id="wrong-answer" style="display: none; background: red; color: white; padding: 15px; width: 50%; margin: auto; margin-bottom: 2rem;">
-        <p>Wrong!</p>
-        <p id="explanation-wrong"></p>
-      </div>
-      <div class="button-panel">
-        <button id="next">Next Question</button>
-        <button id="check">Check</button>
-      </div>
+      <aside id="sidebar">
+        <div class="counter">
+          <h3>Question</h3>
+          <p class="counter-number" id="question-counter"></p>
+        </div>
+        <div class="counter">
+          <h3>Correct</h3>
+          <p class="counter-number" id="correct-counter"></p>
+        </div>
+      </aside>
+      <section class="quiz">
+        <div id="game-type">
+          <h2>Choose your game type</h2>
+          <div class="choice-wrapper">
+            <button class="button" id="multiple-choice">Multiple Choice</button>
+            <p>Choose to start a multiple choice quiz if you want to have three possible answers for each question..</p>
+          </div>
+          <div class="choice-wrapper">
+            <button class="button" id="no-answers">No answers</button>
+            <p>Choose to start a game with no possible answers. Only the question will be shown.</p>
+          </div>
+        </div>
+        <p class="question" id="question"></p>
+        <form class="answers" id="answers">
+        </form>
+        <div id="right-answer" style="display: none; background: green; color: white; padding: 15px; width: 50%; margin: auto; margin-bottom: 2rem;">
+          <p>Correct!</p>
+          <p id="explanation-correct"></p>
+        </div>
+        <div id="wrong-answer" style="display: none; background: red; color: white; padding: 15px; width: 50%; margin: auto; margin-bottom: 2rem;">
+          <p>Wrong!</p>
+          <p id="explanation-wrong"></p>
+        </div>
+        <div class="button-panel" id="button-panel">
+          <button id="next">Next Question</button>
+          <button id="check">Check</button>
+          <button id="restart-no-answers">Restart</button>
+          <button id="restart-multiple-choice">Restart</button>
+        </div>
+        <div class="finished" id="finished">
+          <h2>Done! 🎉</h2>
+          <p>You have answered all questions in this category. Well done!</p>
+        </div>
+      </section>
     </main>
     <footer class="footer">
       <p class="footer-quote">Made with ❤️</p>

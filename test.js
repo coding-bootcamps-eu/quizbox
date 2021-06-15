@@ -7,8 +7,15 @@ const explanationWrong = document.getElementById("explanation-wrong")
 const wrongAnswer = document.getElementById("wrong-answer")
 const nextBtn = document.querySelector("#next")
 const checkBtn = document.querySelector("#check")
+const restartNoAnswersBtn = document.querySelector("#restart-no-answers")
+const restartMultipleChoiceBtn = document.querySelector("#restart-multiple-choice")
 const multipleChoiceBtn = document.querySelector("#multiple-choice")
 const noAnswersBtn = document.querySelector("#no-answers")
+const questionCounter = document.querySelector("#question-counter")
+const correctCounter = document.querySelector("#correct-counter")
+const sideBar = document.querySelector("#sidebar")
+const buttonPanel = document.querySelector("#button-panel")
+const gameType = document.querySelector("#game-type")
 
 //SHUFFLE FUNCTION
 shuffle = (a) => {
@@ -19,21 +26,33 @@ shuffle = (a) => {
 return a;
 }
 
+sideBar.style.display = "none"
+buttonPanel.hidden = true
+
 //QUIZBOX WITHOUT MULTIPLE-CHOICE
 initQuizBox = () => {
   noAnswersBtn.hidden = true
   multipleChoiceBtn.hidden = true
   checkBtn.hidden = true
+  restartMultipleChoiceBtn.hidden = true
+  restartNoAnswersBtn.hidden = true
+  sideBar.hidden = false
+  buttonPanel.style.display = "block"
 
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
       all = data.questions
+
+      //RANDOMIZE QUESTIONS' ORDER IN ARRAY
       all = shuffle(all)
       currentPosition = 0
-      currentQuestion = all[currentPosition].question
+
+      //START WITH FIRST QUESTION IN ARRAY
+      currentQuestion = all[currentPosition].question 
 
       renderQuestion = () => {
+        gameType.hidden = true
         question.innerHTML = currentQuestion
 
         nextQuestion = () => {
@@ -50,81 +69,208 @@ initQuizBox = () => {
 //QUIZBOX WITH MULTIPLE-CHOICE ANSWERS
 initMultipleChoice = () => {
 
+  nextBtn.style.display = 'none'
   multipleChoiceBtn.hidden = true
   noAnswersBtn.hidden = true
-  nextBtn.hidden = true
+  nextBtn.style.display = "hidden"
+  restartMultipleChoiceBtn.hidden = true
+  restartNoAnswersBtn.hidden = true
+  sideBar.style.display = "flex"
+  buttonPanel.style.display = "flex"
+  gameType.hidden = true
+  correctNumber = 0
   
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         all = data.questions
-        all = shuffle(all) //RANDOMIZE QUESTIONS' ORDER WITH SHUFFLE
-        currentPosition = 0
-        currentQuestion = all[currentPosition].question
+
+        //RANDOMIZE QUESTIONS' ORDER WITH SHUFFLE
+        all = shuffle(all)
 
         renderQuestion = () => {
+          isCorrect = null
+          currentPosition = 0
+          currentQuestion = all[currentPosition].question
+          questionNumber = 1
+          questionTotal = all.length
           question.innerText = currentQuestion
+          questionCounter.innerHTML = questionNumber + ' / ' + questionTotal
+          correctCounter.innerHTML = correctNumber
+          console.log(currentQuestion)
 
-          nextQuestion = () => {
-            currentPosition = currentPosition + 1
-            currentQuestion = all[currentPosition].question
-            question.innerText = currentQuestion //RE-RENDER NEW QUESTION
-
-            renderAnswers() //RE-RENDER ANSWERS FOR NEW QUESTION
-
-            nextBtn.hidden = true
-            checkBtn.hidden = false
+          //CONTINUE ONWARDS TO NEXT QUESTION
+          if(currentQuestion !== 'undefined') {
+            nextQuestion = () => {
+              currentPosition++
+              currentQuestion = all[currentPosition].question
+              questionNumber++
+  
+              //SHOW QUESTION COUNTER
+              questionCounter.innerHTML = questionNumber + ' / ' + questionTotal
+  
+              //RE-RENDER NEW QUESTION
+              question.innerText = currentQuestion
+  
+              //RE-RENDER ANSWERS FOR NEW QUESTION
+              renderAnswers()
+  
+              nextBtn.style.display = "hidden"
+              checkBtn.style.display = "inline-block"
+              restartMultipleChoiceBtn.hidden = true
+            }
           }
 
           renderAnswers = () => {
+            checkBtn.style.display = 'inline-block'
             answers = all[currentPosition].answers
-            correct = answers[0].slice() //SAVE FIRST ELEMENT IN ARRAY AS RIGHT ANSWER
-            answers = shuffle(answers) //RANDOMIZE ORDER IN WHICH ANSWERS APPEAR
+
+            //SAVE FIRST ELEMENT IN ARRAY AS CORRECT ANSWER
+            correct = answers[0].slice()
+
+            //RANDOMIZE ORDER IN WHICH ANSWERS APPEAR
+            answers = shuffle(answers)
 
             //BUILD ANSWERS SECTION WITH RADIO BUTTONS
             answersSection.innerHTML = `
             <form action="">
-              <fieldset style="width: 80vw; display: flex; justify-content: space-evenly">
-                <div id="a" class="answer-wrapper">
-                  <input type="radio" name="answer" value="${answers[0]}" id="${answers[0]}">
+              <fieldset>
+                <div id="${answers[0]}" class="answer-wrapper">
+                  <input type="radio" name="answer" value="${answers[0]}" class="${answers[0]}" id="answer-a">
                   <span class="checkmark"></span>
-                  <label for="${answers[0]}">${answers[0]}</label>
+                  <label for="answer-a" class="answer-a '${answers[0]}'">${answers[0]}</label>
                 </div>
-                <div id="b" class="answer-wrapper">
-                  <input type="radio" name="answer" value="${answers[1]}" id="${answers[1]}">
-                  <label for="${answers[1]}">${answers[1]}</label>
+                <div id="${answers[1]}" class="answer-wrapper">
+                  <input type="radio" name="answer" value="${answers[1]}" class="${answers[1]}" id="answer-b">
+                  <label for="answer-b" class="answer-b ${answers[1]}">${answers[1]}</label>
                 </div>
-                <div id="c" class="answer-wrapper">
-                  <input type="radio" name="answer" value="${answers[2]}" id="${answers[2]}">
-                  <label for="${answers[2]}">${answers[2]}</label>
+                <div id="${answers[2]}" class="answer-wrapper">
+                  <input type="radio" name="answer" value="${answers[2]}" class="${answers[2]}" id="answer-c">
+                  <label for="answer-c" class="answer-c ${answers[2]}">${answers[2]}</label>
                 </div>
               </fieldset>
             </form>
             `
+
+            answerA = document.querySelector("#answer-a")
+            answerB = document.querySelector("#answer-b")
+            answerC = document.querySelector("#answer-c")
+
+            //ADD KEYPRESS EVENTS FOR ANSWER SELECTION AND ANSWER CHECK
+            if(checkBtn.style.display == 'inline-block') {
+              document.addEventListener("keypress", (event) => {
+                keyName = event.key
+                keyCode = event.code
+                
+                if(keyName == 1) {
+                  answerA.checked = true
+                }
+  
+                if(keyName == 2) {
+                  answerB.checked = true
+                }
+  
+                if(keyName == 3) {
+                  answerC.checked = true
+                }
+  
+                if(keyName == 'Enter') {
+                  checkBtn.click()
+                }
+              })
+            }
+
             //CHECKING IF ANSWER IS CORRECT
             check = () => {
-              answersBg = document.querySelector('input[name="answer"]').parentElement
-              parent = answersBg.parentElement
-              console.log(parent)
-              answerCheckedBg = document.querySelector('input[name="answer"]:checked').parentElement
-              answerChecked = document.querySelector('input[name="answer"]:checked').id
-              correctAnswer = document.getElementById(correct).parentElement
-              if(answerChecked == correct) { //IF CHECKED ANSWER EQUALS CORRECT ANSWER
-                answerCheckedBg.style.borderColor = "#59CD90"
-                parent.style.pointerEvents = "none"
+              field = document.querySelector('input[name="answer"]').parentElement.parentElement
+              answerCheckedParent = document.querySelector('input[name="answer"]:checked').parentElement
+              answerChecked = document.querySelector('input[name="answer"]:checked').className
+              correctParent = document.getElementById(correct)
+              labelChecked = document.querySelector(`label[for="${answerChecked}"]`)
+              labelCorrect = document.querySelector(`label[for="${correct}"]`)
+              nextBtn.style.display = "hidden"
+  
+              //IF CHECKED ANSWER EQUALS CORRECT ANSWER
+              if(answerChecked == correct) {
+
+                //ADD TO CORRECT COUNTER
+                correctNumber++
+                correctCounter.innerText = correctNumber
+
+
+                //INDICATING CORRECT ANSWER
+                answerCheckedParent.style.borderColor = "#68B684"
+                answerCheckedParent.style.boxShadow = "0 0 15px #68B684"
+
+                //DISABLES CHOOSING ANOTHER ANSWER
+                field.style.pointerEvents = "none"
+
+                //ENABLE MOVING TO NEXT QUESTION
+                nextBtn.style.display = 'inline-block'
+                checkBtn.style.display = 'none'
               } 
-              else { //IF CHECKED ANSWER DOES NOT EQUAL CORRECT ANSWER
-                answerCheckedBg.style.borderColor = "#FF9FB2"
-                correctAnswer.style.borderColor = "#59CD90"
-                parent.style.pointerEvents = "none"
+
+              //IF CHECKED ANSWER DOES NOT EQUAL CORRECT ANSWER
+              else {
+
+                //INDICATING WRONG ANSWER
+                answerCheckedParent.style.borderColor = "#D72638"
+                answerCheckedParent.style.boxShadow = "0 0 15px #D72638"
+
+                //RENDER CORRECT COUNTER
+                correctCounter.innerText = correctNumber
+
+                //INDICATING CORRECT ANSWER
+                correctParent.style.borderColor = "#68B684"
+                correctParent.style.boxShadow = "0 0 15px #68B684"
+                field.style.pointerEvents = "none"
+
+                //ENABLE MOVING TO NEXT QUESTION
+                nextBtn.style.display = 'inline-block'
+                checkBtn.style.display = 'none'
               }
-              nextBtn.hidden = false
-              checkBtn.hidden = true
+              
+              //EITHER: SHOWING END SCREEN AFTER LAST QUESTION
+              if(questionNumber == all.length){
+                nextBtn.innerText = 'Finish'
+                nextBtn.hidden = false
+                checkBtn.hidden = true
+                restartMultipleChoiceBtn.hidden = true
+
+                endScreen = () => {
+                  checkBtn.hidden = true
+                  question.innerHTML = 'Done! 🎉'
+                  answersSection.innerHTML = `
+                  <p style="font-size: 2.5rem;">You have answered all questions</p>
+                  `
+                }
+
+                nextBtn.addEventListener("click", endScreen)
+              } 
+              
+              //OR: IF IT'S NOT THE LAST QUESTION, MOVE ONWARDS
+              else {
+                nextBtn.hidden = false
+                checkBtn.hidden = true
+              }
+
+              //ADD KEYPRESS EVENT FOR 'NEXT' BUTTON
+              if(nextBtn.style.display !== 'none')
+              document.addEventListener("keypress", (event) => {
+                keyName = event.key
+                keyCode = event.code
+                
+                if(keyName == 'Enter') {
+                  nextBtn.click()
+                }
+              })
             }
           }
+
           renderAnswers()
-          nextBtn.addEventListener("click", nextQuestion)
-          checkBtn.addEventListener("click", check) //STARTING CHECK
+
+          //TRIGGER: CHECK
+          checkBtn.addEventListener("click", check)
         }
         renderQuestion()
       })
@@ -133,5 +279,10 @@ initMultipleChoice = () => {
       });
 }
 
+restartMultipleChoice = () => {
+  initMultipleChoice()
+}
+
 multipleChoiceBtn.addEventListener("click", initMultipleChoice)
 noAnswersBtn.addEventListener("click", initQuizBox)
+restartMultipleChoiceBtn.addEventListener("click", initMultipleChoice)
