@@ -20,7 +20,7 @@
         <option value="terminal-and-shell">Terminal and Shell</option>
         <option value="basics-html-css">Basics of HTML and CSS</option>
         <option value="advanced-html-css">Advanced HTML and CSS</option>
-        <option value="test">Test</option>
+        <!-- <option value="test">Test</option> -->
       </select>
     </header>
     <main class="main">
@@ -29,7 +29,7 @@
           <h3>Question</h3>
           <p class="counter-number" id="question-counter"></p>
         </div>
-        <div class="counter">
+        <div class="counter" id="wrapper-correct">
           <h3>Correct</h3>
           <p class="counter-number" id="correct-counter"></p>
         </div>
@@ -37,16 +37,17 @@
       <section class="quiz">
         <div id="game-type">
           <h2>Choose your game type</h2>
-          <div class="choice-wrapper">
+          <div class="choice-wrapper" id="multiple-choice-wrapper">
             <button class="button" id="multiple-choice">Multiple Choice</button>
             <p>Choose to start a multiple choice quiz if you want to have three possible answers for each question..</p>
           </div>
           <div class="choice-wrapper">
             <button class="button" id="no-answers">No answers</button>
-            <p>Choose to start a game with no possible answers. Only the question will be shown.</p>
+            <p>Choose to start a game with no possible answers shown. Only the question will be shown.</p>
           </div>
         </div>
         <p class="question" id="question"></p>
+        <div id="done"></div>
         <form class="answers" id="answers">
         </form>
         <div id="right-answer" style="display: none; background: green; color: white; padding: 15px; width: 50%; margin: auto; margin-bottom: 2rem;">
@@ -73,5 +74,5 @@
       <p class="footer-quote">Made with ❤️</p>
     </footer>
   </body>
-  <script src="test.js"></script>
+  <script src="script.js"></script>
 </html>

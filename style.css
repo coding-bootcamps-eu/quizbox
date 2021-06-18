@@ -1,7 +1,7 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;700&display=swap");
 html {
   font-size: 20px;
+  -webkit-print-color-adjust: exact;
 }
 
 * {
@@ -122,27 +122,6 @@ header #topic:focus {
   outline: none;
 }
 
-#next::before, #check::before, #restart-no-answers::before, #restart-multiple-choice::before {
-  content: 'Enter ⏎';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 65px;
-  height: 25px;
-  font-size: 0.8rem;
-  background: white;
-  color: #6d51c3;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 main {
   min-height: calc(100vh - 75px);
   display: -webkit-box;
@@ -179,7 +158,7 @@ main aside .counter {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 60%;
+  width: 70%;
   padding: 15px 0;
   background: rgba(109, 81, 195, 0.1);
   border-radius: 2px;
@@ -397,5 +376,34 @@ main .quiz .button-panel {
 
 main .quiz .finished {
   display: none;
+}
+
+main #done {
+  text-align: center;
+}
+
+main #done h1 {
+  font-size: 3rem;
+}
+
+main #done p {
+  font-size: 2rem;
+}
+
+main #done p:nth-of-type(2) {
+  margin-bottom: 100px;
+}
+
+main #done a {
+  margin-top: 50px;
+  padding: 15px 30px;
+  color: white;
+  background: #6d51c3;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+main #done a:hover {
+  background: rgba(109, 81, 195, 0.8);
 }
 /*# sourceMappingURL=style.css.map */
