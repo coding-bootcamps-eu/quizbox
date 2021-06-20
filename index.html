@@ -20,7 +20,7 @@
         <option value="terminal-and-shell">Terminal and Shell</option>
         <option value="basics-html-css">Basics of HTML and CSS</option>
         <option value="advanced-html-css">Advanced HTML and CSS</option>
-        <!-- <option value="test">Test</option> -->
+        <option value="test">Test</option>
       </select>
     </header>
     <main class="main">
@@ -37,13 +37,13 @@
       <section class="quiz">
         <div id="game-type">
           <h2>Choose your game type</h2>
+          <div class="choice-wrapper">
+            <button class="button" id="no-answers">Questions only</button>
+            <p>Choose to start a game with no possible answers shown. Only the question will be shown.</p>
+          </div>
           <div class="choice-wrapper" id="multiple-choice-wrapper">
             <button class="button" id="multiple-choice">Multiple Choice</button>
-            <p>Choose to start a multiple choice quiz if you want to have three possible answers for each question..</p>
-          </div>
-          <div class="choice-wrapper">
-            <button class="button" id="no-answers">No answers</button>
-            <p>Choose to start a game with no possible answers shown. Only the question will be shown.</p>
+            <p>Choose to start a multiple choice quiz if you want to have three possible answers for each question.</p>
           </div>
         </div>
         <p class="question" id="question"></p>
@@ -61,6 +61,7 @@
         <div class="button-panel" id="button-panel">
           <button id="next">Next Question</button>
           <button id="check">Check</button>
+          <button id="end">Finish</button>
           <button id="restart-no-answers">Restart</button>
           <button id="restart-multiple-choice">Restart</button>
         </div>
@@ -69,10 +70,11 @@
           <p>You have answered all questions in this category. Well done!</p>
         </div>
       </section>
+      <section id="loading"></section>
     </main>
     <footer class="footer">
       <p class="footer-quote">Made with ❤️</p>
     </footer>
   </body>
-  <script src="script.js"></script>
+  <script src="main.js"></script>
 </html>
