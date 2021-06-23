@@ -10,11 +10,87 @@
     <meta name="author" content="Coding Bootcamps Europe" />
     <title>Quizbox</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="css/vanessa.css" />
+    <link rel="shortcut icon" href="#" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-TileImage"
+      content="/favicon/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
   </head>
   <body>
     <header class="header">
-      <h1 class="title">Quiz Box</h1>
+      <h1 class="title"><a href="./">Quiz Box</a></h1>
       <select class="topic-selection" name="" id="topic">
         <option value="terminal-and-shell">Terminal and Shell</option>
         <option value="basics-html-css">Basics of HTML and CSS</option>
@@ -22,15 +98,47 @@
       </select>
     </header>
     <main class="main">
-      <p class="question" id="question"></p>
-      <div class="button-panel">
-        <button id="next">Next Question</button>
-        <button id="restart">Restart</button>
-      </div>
+      <aside id="sidebar">
+        <div class="counter">
+          <h3>Question</h3>
+          <p class="counter-number" id="question-counter"></p>
+        </div>
+        <div class="counter" id="wrapper-correct">
+          <h3>Correct</h3>
+          <p class="counter-number" id="correct-counter"></p>
+        </div>
+      </aside>
+      <section class="quiz">
+        <div id="game-type">
+          <h2>Choose your game type</h2>
+          <div class="choice-wrapper">
+            <button class="button" id="no-answers">Questions only</button>
+            <p>
+              Choose to start a game with no possible answers shown. Only the
+              question will be shown.
+            </p>
+          </div>
+          <div class="choice-wrapper" id="multiple-choice-wrapper">
+            <button class="button" id="multiple-choice">Multiple Choice</button>
+            <p>
+              Choose to start a multiple choice quiz if you want to have three
+              possible answers for each question.
+            </p>
+          </div>
+        </div>
+        <p class="question" id="question"></p>
+        <div id="done"></div>
+        <form class="answers" id="answers"></form>
+        <div class="button-panel" id="button-panel">
+          <button id="next">Next Question</button>
+          <button id="check">Check</button>
+          <button id="end">Finish</button>
+          <button id="restart-no-answers">Restart</button>
+          <button id="restart-multiple-choice">Restart</button>
+        </div>
+      </section>
     </main>
-    <footer class="footer">
-      <p class="footer-quote">Made with ❤️ by&nbsp;</p>
-    </footer>
+    <footer class="footer"></footer>
   </body>
   <script src="script.js"></script>
 </html>
