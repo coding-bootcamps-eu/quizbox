@@ -99,7 +99,7 @@ function renderQuestions() {
         renderAnswers()
     }
 
-    question.innerHTML = currentQuestion
+    question.innerText = currentQuestion
 }
 
 function nextQuestion() {
