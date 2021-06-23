@@ -118,7 +118,7 @@ function nextQuestion() {
         renderAnswers()
     }
 
-    question.innerHTML = currentQuestion
+    question.innerText = currentQuestion
 }
 
 function renderAnswers() {
