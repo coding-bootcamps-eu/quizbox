@@ -87,10 +87,12 @@ function renderQuestions() {
 
     if(gameMode == 1) {
         nextBtn.style.display = "block"
+        wrapperCorrect.style.display = "none"
         currentQuestion = all[currentPosition].question || all[currentPosition]
         console.log(currentQuestion)
         answersSection.style.display = "none"
     } else {
+        wrapperCorrect.style.display = "block"
         currentQuestion = all[currentPosition].question
         correctNumber = 0
         correctCounter.innerText = correctNumber
