@@ -191,7 +191,7 @@ function check() {
         answerCheckedParent.style.boxShadow = "0 0 15px #D72638"
 
         //RENDER CORRECT COUNTER
-        correctCounter.innerText = correctNumber
+        correctCounter.innerText = "correctNumber"
 
         //INDICATING CORRECT ANSWER
         correctParent.style.borderColor = "#68B684"

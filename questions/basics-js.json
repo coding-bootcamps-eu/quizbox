@@ -1,0 +1,23 @@
+{
+  "questions": [
+    "Name three data types?",
+    "What will be the output: console.log(1++)",
+    "What will be the output: console.log(4--)",
+    "What is the data type: console.log('2')",
+    "What is an array?",
+    "What is an object?",
+    "Can an array include an object?",
+    "Can an array include another array?",
+    "Can an object include an array?",
+    "What are logical operators?",
+    "What are arithmetical operators?",
+    "What are comparison operators?",
+    "What is a function scope?",
+    "What is the global scope?",
+    "Name three ways to declare variables",
+    "What will be the output: console.log('2' < 4)",
+    "What is a function?",
+    "What will be the output: console.log(4 == '4')",
+    "What will be the output: console.log(4 === '4')"
+  ]
+}
